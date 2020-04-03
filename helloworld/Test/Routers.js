@@ -89,18 +89,14 @@ const bottomBar = createBottomTabNavigator({
         Right:{screen:Right},
     },{
         navigationOptions:({navigation}) => {
-            //当在首页进行跳转时 隐藏tabbar
-            let tabBarVisible = true;
-            if (navigation.state.index > 0) {
-                tabBarVisible = false;
-              }
             return {
                 tabBarLabel:'首页',
                 tabBarIcon: ({focused, horizontal, tintColor}) => (
                     <Image source={require('../Test/Images/帽子.png')}
                                       style={{width: 22, height: 22, tintColor: tintColor}}/>
                 ),
-                tabBarVisible,
+                //当在首页进行跳转时 隐藏tabbar
+                tabBarVisible:navigation.state.index === 0,
               };
         },
         //边缘滑动返回上级页面时动画效果
@@ -123,18 +119,14 @@ const bottomBar = createBottomTabNavigator({
         Mine:{screen:Mine},
     },{
         navigationOptions:({navigation}) => {
-            //当在我的进行跳转时 隐藏tabbar
-            let tabBarVisible = true;
-            if (navigation.state.index > 0) {
-                tabBarVisible = false;
-              }
             return {
                 tabBarLabel:'我的',
                 tabBarIcon: ({focused, horizontal, tintColor}) => (
                     <Image source={require('../Test/Images/小黄鸭.png')}
                                       style={{width: 22, height: 22, tintColor: tintColor}}/>
                 ),
-                tabBarVisible,
+                //当在我的进行跳转时 隐藏tabbar
+                tabBarVisible:navigation.state.index === 0,
               };
         },
         headerMode:'float',
@@ -162,7 +154,7 @@ const bottomBar = createBottomTabNavigator({
         labelStyle: {
             fontSize: 14 // 文字大小
         }
-    }
+    },
 });
 
 const AppNavigator=createStackNavigator({
