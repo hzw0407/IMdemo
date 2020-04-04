@@ -1,13 +1,26 @@
 import React,{Component} from 'react';
-import {View,Text,StyleSheet,Image} from 'react-native';
+import {View,Text,StyleSheet,Image, Alert} from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { HeaderTitle } from 'react-navigation-stack';
+import {fetchRequest} from './NetworkRequest'
 
 export default class Mine extends React.Component {
     static navigationOptions = ({ navigation, navigationOptions }) => ({
         title:navigation.state.params?navigation.state.params.headerTitle:'我的',
         gestureResponseDistance:{horizontal:300},
     });
+
+    componentDidMount() {
+        fetchRequest('http://facebook.github.io/react-native/movies.json','GET')
+        .then(res => {
+          //请求成功
+        //   Alert.alert('请求成功');
+        }).catch(err => {
+          //请求失败
+        //   Alert.alert('请求失败');
+        });
+    }
+
     render() {
         return (
             <View style={styles.container}>

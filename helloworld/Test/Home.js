@@ -17,10 +17,12 @@ import Detail from './Detail'
 import Right from './Right'
 import {Ionicons} from "react-native-vector-icons/Ionicons"
 import { color } from 'react-native-reanimated';
+import {fetchRequest} from './NetworkRequest'
 
 let {width,height} = Dimensions.get('window');
-const REQUEST_URL =
-  "https://raw.githubusercontent.com/facebook/react-native/0.51-stable/docs/MoviesExample.json";
+// const REQUEST_URL =
+  // "https://raw.githubusercontent.com/facebook/react-native/0.51-stable/docs/MoviesExample.json";
+  const REQUEST_URL = "https://reactnative.dev/movies.json";
 
 export default class Home extends React.Component{
   static navigationOptions = ({navigation,screenProps}) => ({
@@ -58,34 +60,45 @@ export default class Home extends React.Component{
 
     //抓取数据
     fetchData() {
-        this.setState({
-            data: [
-                {
-                id: '1',
-                title: "标题1",
-                year: "2020",
-                posters: { thumbnail: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585737299484&di=4b013b39d518f9b90e232e48a66e7414&imgtype=0&src=http%3A%2F%2Fa0.att.hudong.com%2F78%2F52%2F01200000123847134434529793168.jpg" }
-              },
-              {
-                id: '2',
-                title: "标题2",
-                year: "2021",
-                posters: { thumbnail: "http://tx.haiqq.com/uploads/allimg/170510/001R35F4-3.jpg" }
-              },
-              {
-                id: '3',
-                title: "标题3",
-                year: "2022",
-                posters: { thumbnail: "https://b-ssl.duitang.com/uploads/blog/201601/06/20160106222247_xNjVa.thumb.224_0.jpeg" }
-              },
-              {
-                id: '4',
-                title: "标题4",
-                year: "2023",
-                posters: { thumbnail: "http://img.duoziwang.com/2016/07/27/201517639.png" }
-              }
-            ],
-              loaded: true
+        // this.setState({
+        //     data: [
+        //         {
+        //         id: '1',
+        //         title: "标题1",
+        //         year: "2020",
+        //         posters: { thumbnail: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585737299484&di=4b013b39d518f9b90e232e48a66e7414&imgtype=0&src=http%3A%2F%2Fa0.att.hudong.com%2F78%2F52%2F01200000123847134434529793168.jpg" }
+        //       },
+        //       {
+        //         id: '2',
+        //         title: "标题2",
+        //         year: "2021",
+        //         posters: { thumbnail: "http://tx.haiqq.com/uploads/allimg/170510/001R35F4-3.jpg" }
+        //       },
+        //       {
+        //         id: '3',
+        //         title: "标题3",
+        //         year: "2022",
+        //         posters: { thumbnail: "https://b-ssl.duitang.com/uploads/blog/201601/06/20160106222247_xNjVa.thumb.224_0.jpeg" }
+        //       },
+        //       {
+        //         id: '4',
+        //         title: "标题4",
+        //         year: "2023",
+        //         posters: { thumbnail: "http://img.duoziwang.com/2016/07/27/201517639.png" }
+        //       }
+        //     ],
+        //       loaded: true
+        // });
+        fetchRequest(REQUEST_URL,'GET')
+        .then(res => {
+          //请求成功
+          this.setState({
+            data: this.state.data.concat(res.movies),
+            loaded: true
+        });
+        }).catch(err => {
+          //请求失败
+          Alert.alert('请求失败',err);
         });
       //   fetch(REQUEST_URL)
       // .then((response) => response.json())
@@ -114,14 +127,15 @@ export default class Home extends React.Component{
       renderMovie({ item }) {
         let { target } = this.props;
         //没有年份默认显示2020
-        var Year = item.year ? item.year : '2020';
+        var Year = item.releaseYear ? item.releaseYear : '2020';
         //如果图片是以gif结尾 则默认显示一张别的图片
-        var image = String(item.posters.thumbnail);
-        if (image.endsWith('gif')) {
-            image = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585737299484&di=4b013b39d518f9b90e232e48a66e7414&imgtype=0&src=http%3A%2F%2Fa0.att.hudong.com%2F78%2F52%2F01200000123847134434529793168.jpg';
-        }else {
-            image = String(item.posters.thumbnail);
-        }
+        // var image = String(item.posters.thumbnail);
+        // if (image.endsWith('gif')) {
+        //     image = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585737299484&di=4b013b39d518f9b90e232e48a66e7414&imgtype=0&src=http%3A%2F%2Fa0.att.hudong.com%2F78%2F52%2F01200000123847134434529793168.jpg';
+        // }else {
+        //     image = String(item.posters.thumbnail);
+        // }
+        var image = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585737299484&di=4b013b39d518f9b90e232e48a66e7414&imgtype=0&src=http%3A%2F%2Fa0.att.hudong.com%2F78%2F52%2F01200000123847134434529793168.jpg';
         return (
             <View style={styles.container}>
                   <Image
@@ -129,8 +143,8 @@ export default class Home extends React.Component{
                     style={styles.thumbnail}
                   />
                   <View style={styles.rightContainer}>
-                    <Text style={styles.title}>{item.title}</Text>
-                    <Text style={styles.year}>{Year}</Text>
+                    <Text style={styles.title}>{'标题:' + item.title}</Text>
+                    <Text style={styles.year}>{'年份:' + Year}</Text>
                   </View>
                   <View style={styles.pushView}>
                       <Button style={styles.pushButton} title='点我跳转到详情' onPress={()=>{
