@@ -14,21 +14,6 @@ import { createMaterialBottomTabNavigator } from 'react-navigation-material-bott
 import { Colors, Header } from 'react-native/Libraries/NewAppScreen';
 import { color } from 'react-native-reanimated';
 
-// const topBar = createMaterialBottomTabNavigator({
-//     Home: {
-//         screen:Home,
-//         navigationOptions:{
-//             tabBarLabel:'首页'
-//         }
-//     },
-//     Mine:{
-//         screen:Mine,
-//         navigationOptions:{
-//             tabBarLabel:'我的'
-//         }
-//     }
-// });
-
 // const bottomBar = createBottomTabNavigator({
 //     首页:{
 //         screen:Home,
@@ -92,7 +77,7 @@ const bottomBar = createBottomTabNavigator({
             return {
                 tabBarLabel:'首页',
                 tabBarIcon: ({focused, horizontal, tintColor}) => (
-                    <Image source={require('../Test/Images/帽子.png')}
+                    <Image source={require('../Test/Images/纪念日.png')}
                                       style={{width: 22, height: 22, tintColor: tintColor}}/>
                 ),
                 //当在首页进行跳转时 隐藏tabbar
@@ -103,17 +88,6 @@ const bottomBar = createBottomTabNavigator({
         headerMode:'float',
         //定义跳转风格
         mode:'card',
-        // navigationOptions:{
-        //     // headerTitle:'首页',
-        //     tabBarLabel:'首页',
-        // //     headerRight:<TouchableOpacity onPress = {()=> navigation.navigate("Right")}>
-        // //           <Text> 跳转</Text>
-        // //   </TouchableOpacity>,
-        //     tabBarIcon: ({focused, horizontal, tintColor}) => (
-        //         <Image source={require('../Test/Images/帽子.png')}
-        //                           style={{width: 22, height: 22, tintColor: tintColor}}/>
-        //     )
-        // },
     }),
     Mine:createStackNavigator({
         Mine:{screen:Mine},
@@ -122,7 +96,7 @@ const bottomBar = createBottomTabNavigator({
             return {
                 tabBarLabel:'我的',
                 tabBarIcon: ({focused, horizontal, tintColor}) => (
-                    <Image source={require('../Test/Images/小黄鸭.png')}
+                    <Image source={require('../Test/Images/礼物.png')}
                                       style={{width: 22, height: 22, tintColor: tintColor}}/>
                 ),
                 //当在我的进行跳转时 隐藏tabbar
@@ -131,14 +105,6 @@ const bottomBar = createBottomTabNavigator({
         },
         headerMode:'float',
         mode:'card',
-        // navigationOptions:{
-        //     // headerTitle:'我的',
-        //     tabBarLabel:'我的',
-        //     tabBarIcon: ({focused, horizontal, tintColor}) => (
-        //         <Image source={require('../Test/Images/小黄鸭.png')}
-        //                           style={{width: 22, height: 22, tintColor: tintColor}}/>
-        //     )
-        // }
     })
 },{
     tabBarPosition: "bottom", //设置tabbar的位置，iOS默认在底部，安卓默认在顶部。（属性值：'top'，'bottom'）
@@ -146,7 +112,7 @@ const bottomBar = createBottomTabNavigator({
     animationEnabled: false, //是否在更改标签时显示动画
     lazy: true, //是否根据需要懒惰呈现标签，而不是提前制作，意思是在app打开的时候将底部标签栏全部加载，默认false,推荐改成true
     tabBarOptions: {
-        activeTintColor: "#ff6347", //label和icon的前景色 活跃状态下（选中）
+        activeTintColor: "#F44444", //label和icon的前景色 活跃状态下（选中）
         inactiveTintColor: "#333", //label和icon的前景色 不活跃状态下
         showLabel: true, //是否显示label，默认开启
         showIcon: true, // android 默认不显示 icon, 需要设置为 true 才会显示

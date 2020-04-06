@@ -31,7 +31,8 @@ export default class Home extends React.Component{
     headerRight:(
         <View style={{marginRight:30/1536*width}}>
                     <TouchableOpacity onPress={() =>{
-                      navigation.navigate('Right');
+                      //带参数跳转
+                      navigation.navigate('Right',{title:'测试'});
                     }}>
                     <Text style={{color:'red',marginRight:20}}>右边按钮</Text>
                     </TouchableOpacity>
