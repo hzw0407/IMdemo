@@ -16,6 +16,8 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* helloworldTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* helloworldTests.m */; };
+		7C7B3A31243F49CB00B361EF /* TCWebCodesSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7B3A30243F49CB00B361EF /* TCWebCodesSDK.framework */; };
+		7C7B3A3A243F4D8F00B361EF /* CaptchaModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7B3A39243F4D8F00B361EF /* CaptchaModule.m */; };
 		D1B8945B4D7E6CE8C0157627 /* libPods-helloworld-helloworldTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC5ED39B895196FB36F127C1 /* libPods-helloworld-helloworldTests.a */; };
 		E4CAE5023529594A4CD059EB /* libPods-helloworld.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D113CBFFB839E5D2D68C61E5 /* libPods-helloworld.a */; };
 		F4A1FB9E290361FE59F65844 /* libPods-helloworld-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8FD814774220D7DCF4C6766 /* libPods-helloworld-tvOSTests.a */; };
@@ -57,6 +59,9 @@
 		2D02E4901E0B4A5D006451C7 /* helloworld-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "helloworld-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AD94181945250972705CD13 /* Pods-helloworld-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-helloworld-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-helloworld-tvOS/Pods-helloworld-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		7711CD339AE53D614810DCDB /* Pods-helloworld-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-helloworld-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-helloworld-tvOSTests/Pods-helloworld-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		7C7B3A30243F49CB00B361EF /* TCWebCodesSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TCWebCodesSDK.framework; sourceTree = "<group>"; };
+		7C7B3A38243F4D8F00B361EF /* CaptchaModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CaptchaModule.h; sourceTree = "<group>"; };
+		7C7B3A39243F4D8F00B361EF /* CaptchaModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CaptchaModule.m; sourceTree = "<group>"; };
 		87205A28494E23747FE298CC /* Pods-helloworld-helloworldTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-helloworld-helloworldTests.release.xcconfig"; path = "Target Support Files/Pods-helloworld-helloworldTests/Pods-helloworld-helloworldTests.release.xcconfig"; sourceTree = "<group>"; };
 		A2D840374D38C942E767C799 /* Pods-helloworld-helloworldTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-helloworld-helloworldTests.debug.xcconfig"; path = "Target Support Files/Pods-helloworld-helloworldTests/Pods-helloworld-helloworldTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A8FD814774220D7DCF4C6766 /* libPods-helloworld-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-helloworld-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C7B3A31243F49CB00B361EF /* TCWebCodesSDK.framework in Frameworks */,
 				E4CAE5023529594A4CD059EB /* libPods-helloworld.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -132,6 +138,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				7C7B3A38243F4D8F00B361EF /* CaptchaModule.h */,
+				7C7B3A39243F4D8F00B361EF /* CaptchaModule.m */,
 			);
 			name = helloworld;
 			sourceTree = "<group>";
@@ -159,6 +167,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				7C7B3A30243F49CB00B361EF /* TCWebCodesSDK.framework */,
 				13B07FAE1A68108700A75B9A /* helloworld */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* helloworldTests */,
@@ -628,6 +637,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C7B3A3A243F4D8F00B361EF /* CaptchaModule.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
@@ -730,6 +740,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 47ET4XNUCV;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"FB_SONARKIT_ENABLED=1",
@@ -757,6 +771,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 47ET4XNUCV;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = helloworld/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
